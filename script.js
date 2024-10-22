@@ -45,13 +45,24 @@ function lightMode(){
 function switchTheme(event){
     if(event.target.checked){
         document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
         darkMode();
+
     }
     else{
         document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
         lightMode();
     }
 }
 
 // Add Event Listener
 toggleSwitch.addEventListener('change', switchTheme);
+
+// Checking local storage for theme
+const currentTheme = localStorage.getItem('theme');
+if(currentTheme){
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+}
+
